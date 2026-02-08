@@ -1,11 +1,5 @@
 # Interactive Matrix Analysis Web Application
 
-A full-stack web application for performing matrix operations with proper Data Structures & Algorithms implementation, strict frontend-backend separation, and a calm academic UI.
-
-## 📋 Prerequisites
-
-Before running this application, ensure you have the following installed on your system:
-
 ### Required Software
 
 1. **Node.js** (v18.0.0 or higher)
@@ -17,14 +11,7 @@ Before running this application, ensure you have the following installed on your
    - Download from: https://git-scm.com/
    - Verify installation: `git --version`
 
-### System Requirements
-- **OS**: Windows 10/11, macOS, or Linux
-- **RAM**: 4GB minimum (8GB recommended)
-- **Disk Space**: ~500MB for dependencies and application
-
----
-
-## 🎯 Features
+##  Features
 
 - **6 Matrix Operations** (all server-side):
   - Row Sum & Average
@@ -60,10 +47,7 @@ Before running this application, ensure you have the following installed on your
 ## 🚀 Quick Start (One-Click Setup)
 
 ### Step 1: Clone the Repository
-```bash
-git clone <your-repository-url>
-cd pavans_project
-```
+
 
 ### Step 2: Install All Dependencies (One Command!)
 
@@ -99,20 +83,6 @@ This will start both servers:
 
 ### Step 4: Open in Browser
 Navigate to `http://localhost:5173` in your web browser.
-
----
-
-## 📖 Usage Flow
-
-1. **Home Page**: Enter matrix size N (must be ≥ 20)
-2. **Matrix Input Page**: Fill in N×N matrix values (or use "Fill with Random Values")
-3. **Analysis Page**: Click any operation button to calculate and view results below
-
-Each operation displays:
-- Result data (array or matrix)
-- Time complexity
-- Space complexity
-- Algorithm notes
 
 ---
 
@@ -215,7 +185,7 @@ pavans_project/
 
 ---
 
-## 🛡️ Constraints
+##  Constraints
 
 - Matrix size N ≥ 20 (enforced on both frontend and backend)
 - All matrix elements must be numeric
@@ -223,17 +193,7 @@ pavans_project/
 
 ---
 
-## 🎨 Design Principles
-
-- **Calm & Academic**: No aggressive animations or neon colors
-- **Per-Operation Results**: Each button displays results independently below it
-- **No General Section**: Results are never combined
-- **Subtle Animations**: Slow fade-in effects for result cards only
-- **Strict Separation**: All matrix calculations run on the backend
-
----
-
-## 👨‍💻 Development Commands
+##  Development Commands
 
 ### Backend
 ```bash
@@ -252,29 +212,8 @@ npm run build    # Production build
 
 ---
 
-## 📝 Files to Commit to GitHub
-
-**Include** (all tracked by Git):
-- All source code files (`*.ts`, `*.tsx`, `*.css`, `*.html`)
-- Configuration files (`package.json`, `tsconfig.json`, `tailwind.config.js`, etc.)
-- Scripts (`setup.bat`, `setup.sh`, `start.bat`, `start.sh`)
-- Documentation (`README.md`, `ALGORITHMS.md`, `TESTING.md`)
-- `.gitignore`
-
-**Exclude** (in `.gitignore`):
-- `node_modules/` - Will be installed via `setup.bat`/`setup.sh`
-- `dist/` - Build output
-- `.env` - Environment variables
-- IDE files (`.vscode/`, `.idea/`)
-
-Your friend only needs to run `setup.bat` (or `setup.sh`) to install all dependencies!
-
----
-
 ## 📄 License
 
 MIT
 
 ---
-
-**Academic Project**: Focus on DSA correctness, clean architecture, and maintainability.

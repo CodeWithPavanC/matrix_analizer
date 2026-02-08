@@ -6,16 +6,15 @@ echo ""
 echo "Starting servers..."
 echo ""
 
-# Start backend in background
+# Start backend 
 echo "Starting Backend Server..."
 cd backend
 npm run dev &
 BACKEND_PID=$!
 
-# Wait a moment for backend to start
 sleep 2
 
-# Start frontend in background
+# Start frontend 
 echo "Starting Frontend Server..."
 cd ../frontend
 npm run dev &
@@ -33,5 +32,5 @@ echo ""
 echo "Press Ctrl+C to stop both servers"
 echo ""
 
-# Wait for both processes
+
 wait $BACKEND_PID $FRONTEND_PID
