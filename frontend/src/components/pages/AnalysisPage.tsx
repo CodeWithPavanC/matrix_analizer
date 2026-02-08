@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AnimatedResultCard from '@/components/layout/AnimatedResultCard';
 import type { MatrixOperationResult } from '@/types/matrix';
+import { ElegantShape } from '@/components/ui/shape-landing-hero';
+import { motion } from 'framer-motion';
 
 const API_BASE_URL = 'http://localhost:3001/api/matrix';
 
@@ -54,27 +56,73 @@ export default function AnalysisPage() {
     };
 
     return (
-        <div className="min-h-screen bg-calm-bg p-8">
-            <div className="max-w-6xl mx-auto">
-                <div className="mb-8 flex items-center justify-between">
+        <div className="relative min-h-screen bg-[#030303] p-8 overflow-hidden">
+            {/* Background gradients */}
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-indigo-500/[0.03] blur-3xl" />
+
+            {/* Floating geometric shapes */}
+            <div className="absolute inset-0 overflow-hidden">
+                <ElegantShape
+                    delay={0.2}
+                    width={350}
+                    height={90}
+                    rotate={10}
+                    gradient="from-amber-500/[0.1]"
+                    className="left-[-8%] top-[20%]"
+                />
+                <ElegantShape
+                    delay={0.4}
+                    width={280}
+                    height={70}
+                    rotate={-18}
+                    gradient="from-indigo-500/[0.1]"
+                    className="right-[-4%] top-[60%]"
+                />
+                <ElegantShape
+                    delay={0.3}
+                    width={200}
+                    height={50}
+                    rotate={-25}
+                    gradient="from-rose-500/[0.08]"
+                    className="left-[10%] bottom-[10%]"
+                />
+            </div>
+
+            <div className="relative z-10 max-w-6xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-8 flex items-center justify-between"
+                >
                     <div>
-                        <h1 className="text-3xl font-semibold">Matrix Analysis</h1>
-                        <p className="text-calm-accent mt-1">
+                        <h1 className="text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-white to-indigo-300">
+                            Matrix Analysis
+                        </h1>
+                        <p className="text-white/60 mt-1">
                             {matrixSize}×{matrixSize} Matrix • All operations run server-side
                         </p>
                     </div>
-                    <Button variant="outline" onClick={() => navigate('/input', { state: { matrixSize } })}>
+                    <Button
+                        variant="outline"
+                        onClick={() => navigate('/input', { state: { matrixSize } })}
+                        className="bg-white/[0.03] border-white/[0.1] text-white hover:bg-white/[0.08]"
+                    >
                         ← Edit Matrix
                     </Button>
-                </div>
+                </motion.div>
 
                 <div className="space-y-8">
                     {/* Row Sum Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Row Sum</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Row Sum</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Calculate the sum of elements in each row
                                 </p>
                             </CardHeader>
@@ -82,7 +130,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('row-sum', setRowSumResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'row-sum' ? 'Calculating...' : 'Calculate Row Sum'}
                                 </Button>
@@ -96,14 +144,18 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Column Sum Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Column Sum</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Column Sum</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Calculate the sum of elements in each column
                                 </p>
                             </CardHeader>
@@ -111,7 +163,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('column-sum', setColSumResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'column-sum' ? 'Calculating...' : 'Calculate Column Sum'}
                                 </Button>
@@ -125,14 +177,18 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Row Average Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Row Average</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Row Average</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Calculate the average of elements in each row (reuses row sum)
                                 </p>
                             </CardHeader>
@@ -140,7 +196,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('row-average', setRowAvgResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'row-average' ? 'Calculating...' : 'Calculate Row Average'}
                                 </Button>
@@ -154,14 +210,18 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Column Average Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Column Average</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Column Average</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Calculate the average of elements in each column (reuses column sum)
                                 </p>
                             </CardHeader>
@@ -169,7 +229,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('column-average', setColAvgResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'column-average' ? 'Calculating...' : 'Calculate Column Average'}
                                 </Button>
@@ -183,14 +243,18 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Swap Diagonals Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Swap Upper & Lower Diagonal</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Swap Upper & Lower Diagonal</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Swap elements above and below the main diagonal (in-place operation)
                                 </p>
                             </CardHeader>
@@ -198,7 +262,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('swap-diagonals', setSwapResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'swap-diagonals' ? 'Swapping...' : 'Swap Diagonals'}
                                 </Button>
@@ -212,14 +276,18 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Determinant Section */}
-                    <div>
-                        <Card>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                        <Card className="backdrop-blur-xl bg-white/[0.03] border-white/[0.08]">
                             <CardHeader>
-                                <CardTitle>Determinant</CardTitle>
-                                <p className="text-sm text-calm-accent">
+                                <CardTitle className="text-white/90">Determinant</CardTitle>
+                                <p className="text-sm text-white/60">
                                     Calculate determinant using Gaussian Elimination with Partial Pivoting
                                 </p>
                             </CardHeader>
@@ -227,7 +295,7 @@ export default function AnalysisPage() {
                                 <Button
                                     onClick={() => callAPI('determinant', setDetResult)}
                                     disabled={loading !== null}
-                                    className="w-full sm:w-auto"
+                                    className="w-full sm:w-auto bg-gradient-to-r from-amber-500/20 to-indigo-500/20 border border-white/[0.1] text-white hover:from-amber-500/30 hover:to-indigo-500/30"
                                 >
                                     {loading === 'determinant' ? 'Calculating...' : 'Calculate Determinant'}
                                 </Button>
@@ -241,9 +309,12 @@ export default function AnalysisPage() {
                                 isVisible={true}
                             />
                         )}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
+
+            {/* Bottom gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent pointer-events-none" />
         </div>
     );
 }

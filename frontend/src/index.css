@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-calm-bg text-calm-text antialiased;
+    @apply bg-[#030303] text-white antialiased;
     margin: 0;
     min-height: 100vh;
   }
@@ -28,8 +28,38 @@
   }
 }
 
+@layer utilities {
+  @keyframes gradient-slow {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 @layer components {
   .matrix-input {
-    @apply w-16 h-16 text-center border border-calm-border rounded-md focus:outline-none focus:ring-2 focus:ring-calm-primary transition-all;
+    @apply w-16 h-16 text-center border border-white/[0.1] rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-all bg-white/[0.05] text-white;
   }
 }
